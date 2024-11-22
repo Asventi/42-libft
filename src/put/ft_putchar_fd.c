@@ -6,7 +6,7 @@
 /*   By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:32:57 by pjarnac           #+#    #+#             */
-/*   Updated: 2024/11/12 16:13:34 by pjarnac          ###   ########.fr       */
+/*   Updated: 2024/11/22 20:55:58 by pjarnac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,15 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
+	size_t	total;
+	ssize_t	res;
+
+	total = 0;
+	while (total == 0)
+	{
+		res = write(fd, &c, 1);
+		if (res == -1)
+			return ;
+		total += res;
+	}
 }
