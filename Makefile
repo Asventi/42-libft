@@ -6,7 +6,7 @@
 #    By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 11:53:22 by pjarnac           #+#    #+#              #
-#    Updated: 2024/11/21 15:57:34 by pjarnac          ###   ########.fr        #
+#    Updated: 2024/11/25 14:13:00 by pjarnac          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,8 @@ INCLUDES	=	$(INCS_DIR) \
 
 CC			=	cc
 CFLAGS		+=	-Wall -Wextra -Werror
-CPPFLAGS	+=	$(addprefix -I, $(INCLUDES))
+CPPFLAGS	+=	$(addprefix -I, $(INCLUDES)) \
+				-MMD -MP
 
 LDFLAGS		+=	$(addprefix -L, $(dir $(LIBS_PATH)))
 LDLIBS		+=	$(addprefix -l, $(LIBS))
