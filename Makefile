@@ -107,6 +107,23 @@ TO_DIR =		to/
 TO_SRC =		ft_tolower.c \
 				ft_toupper.c \
 
+# ================PRINTF=============== #
+
+SRC += $(addprefix $(PRINTF_DIR), $(PRINTF_SRC))
+
+PRINTF_DIR =	printf/
+PRINTF_SRC =	ft_printf.c \
+
+# ============PRINTF/FORMATS=========== #
+
+SRC += $(addprefix $(FORMATS_DIR), $(FORMATS_SRC))
+
+FORMATS_DIR =	$(PRINTF_DIR)formats/
+FORMATS_SRC =	formats.c \
+				hex_formats.c \
+				num_formats.c \
+				str_formats.c \
+
 # ==========LIBS / INCLUDES============ #
 
 LIBS_DIR	=
