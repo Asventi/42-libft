@@ -6,7 +6,7 @@
 /*   By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 14:21:19 by pjarnac           #+#    #+#             */
-/*   Updated: 2024/11/12 15:34:29 by pjarnac          ###   ########.fr       */
+/*   Updated: 2024/12/10 15:04:09 by pjarnac          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 int		ft_lstsize(t_list *lst);
 
 int		ft_printf(const char *s, ...);
+
+char	*get_next_line(int fd);
 
 #endif

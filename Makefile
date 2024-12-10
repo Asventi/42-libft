@@ -6,7 +6,7 @@
 #    By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 11:53:22 by pjarnac           #+#    #+#              #
-#    Updated: 2024/11/25 14:13:00 by pjarnac          ###   ########.fr        #
+#    Updated: 2024/12/10 14:39:05 by pjarnac          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,14 @@ SRC += $(addprefix $(TO_DIR), $(TO_SRC))
 TO_DIR =		to/
 TO_SRC =		ft_tolower.c \
 				ft_toupper.c \
+
+# =================GNL================= #
+
+SRC += $(addprefix $(GNL_DIR), $(GNL_SRC))
+
+GNL_DIR =		gnl/
+GNL_SRC =		get_next_line_utils.c \
+				get_next_line.c \
 
 # ================PRINTF=============== #
 
