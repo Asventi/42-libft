@@ -2,6 +2,10 @@
 # Prerequisites
 *.d
 
+*test
+tests/
+.idea/
+
 # Object files
 *.o
 *.ko
