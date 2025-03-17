@@ -30,12 +30,10 @@ t_vcthead	*realloc_vct(t_vcthead *head)
 		new_capacity = 1;
 	else
 		new_capacity = head->capacity * 2;
-	new_head = malloc(sizeof (t_vcthead) + new_capacity * head->e_size);
+	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
+			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return (free(head), NULL);
-	ft_memcpy(new_head, head, sizeof (t_vcthead)
-		+ head->capacity * head->e_size);
-	free(head);
+		return (NULL);
 	new_head->capacity = new_capacity;
 	return (new_head);
 }
@@ -55,12 +53,10 @@ void	vct_allocate(t_vctptr vctptr, size_t size)
 	vct = (t_vct *)vctptr;
 	head = get_vcthead(*vct);
 	new_capacity = head->capacity + size;
-	new_head = malloc(sizeof (t_vcthead) + new_capacity * head->e_size);
+	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
+			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return (free(head), (void) 0);
-	ft_memcpy(new_head, head, sizeof (t_vcthead)
-		+ head->capacity * head->e_size);
+		return ;
 	new_head->capacity = new_capacity;
 	*vct = &new_head->data;
-	free(head);
 }
