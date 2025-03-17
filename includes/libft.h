@@ -16,6 +16,8 @@
 # include <stddef.h>
 # include <limits.h>
 
+# include "../src/vector/vector.h"
+
 typedef struct s_list
 {
 	void			*content;

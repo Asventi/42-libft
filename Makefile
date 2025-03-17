@@ -115,6 +115,16 @@ GNL_DIR =		gnl/
 GNL_SRC =		get_next_line_utils.c \
 				get_next_line.c \
 
+# ================VECTOR=============== #
+
+SRC += $(addprefix $(VECTOR_DIR), $(VECTOR_SRC))
+
+VECTOR_DIR =	vector/
+VECTOR_SRC =	vector.c \
+				vector_add.c \
+				vector_allocs.c \
+				vector_infos.c \
+
 # ================PRINTF=============== #
 
 SRC += $(addprefix $(PRINTF_DIR), $(PRINTF_SRC))
