@@ -66,6 +66,7 @@ MEMORY_SRC =	ft_bzero.c \
 				ft_memcpy.c \
 				ft_memmove.c \
 				ft_memset.c \
+				ft_realloc.c \
 
 # =================PUT================= #
 
