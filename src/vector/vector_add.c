@@ -12,6 +12,7 @@
 
 #include <libft.h>
 #include <stdio.h>
+#include <errno.h>
 
 #include "vector.h"
 
@@ -49,6 +50,53 @@ void	vct_add(t_vctptr vctptr, void *val)
 
 	vct = (t_vct *)vctptr;
 	dest = vct_add_dest(vct);
+	if (!dest)
+		return ;
+	ft_memcpy(dest, val, get_vcthead(*vct)->e_size);
+}
+
+/*!
+ * Return a pointer where you can manually write the next data.
+ * @param vctptr A pointer to the vector.
+ * @param i Index position of element.
+ * @return A pointer to the write destination of the next value.
+ */
+t_vct	vct_insert_dest(t_vctptr vctptr, int32_t i)
+{
+	t_vct		*vct;
+	t_vcthead	*head;
+
+	vct = (t_vct *)vctptr;
+	head = get_vcthead(*vct);
+	if (i >= head->capacity || i < 0)
+		return (errno = EINVAL, NULL);
+	if (is_vct_full(head))
+	{
+		head = realloc_vct(head);
+		if (!head)
+			return (NULL);
+		*vct = head->data;
+	}
+	ft_memmove(&head->data[(i + 1) * head->e_size],
+		&head->data[i * head->e_size],
+		(head->size - i) * head->e_size);
+	head->size += 1;
+	return (&head->data[head->e_size * i]);
+}
+
+/*!
+ * Add value to the end of vector with the pointer to the value.
+ * @param vctptr The pointer to the vector.
+ * @param val Pointer to the value.
+ * @param i Index position of element.
+ */
+void	vct_insert(t_vctptr vctptr, void *val, int32_t i)
+{
+	t_vct	*vct;
+	t_vct	*dest;
+
+	vct = (t_vct *)vctptr;
+	dest = vct_insert_dest(vct, i);
 	if (!dest)
 		return ;
 	ft_memcpy(dest, val, get_vcthead(*vct)->e_size);

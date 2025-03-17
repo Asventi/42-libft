@@ -19,6 +19,16 @@ size_t	vct_size(t_vct vct)
 	return (get_vcthead(vct)->size);
 }
 
+void	set_vct_size(t_vct vct, size_t size)
+{
+	get_vcthead(vct)->size = size;
+}
+
+void	add_vct_size(t_vct vct, size_t size)
+{
+	get_vcthead(vct)->size += size;
+}
+
 size_t	vct_capacity(t_vct vct)
 {
 	return (get_vcthead(vct)->capacity);

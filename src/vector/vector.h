@@ -37,5 +37,9 @@ bool		is_vct_full(t_vcthead *head);
 size_t		vct_size(t_vct vct);
 size_t		vct_capacity(t_vct vct);
 void		vct_allocate(t_vctptr vctptr, size_t size);
+void		vct_insert(t_vctptr vctptr, void *val, int32_t i);
+t_vct		vct_insert_dest(t_vctptr vctptr, int32_t i);
+void		add_vct_size(t_vct vct, size_t size);
+void		set_vct_size(t_vct vct, size_t size);
 
 #endif
