@@ -99,6 +99,7 @@ STR_SRC =		ft_atoi.c \
 				ft_strrchr.c \
 				ft_strtrim.c \
 				ft_substr.c \
+				ft_ischarset.c \
 
 # ==================TO================= #
 
