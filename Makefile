@@ -131,18 +131,31 @@ VECTOR_SRC =	vector.c \
 
 SRC += $(addprefix $(PRINTF_DIR), $(PRINTF_SRC))
 
-PRINTF_DIR =	printf/
+PRINTF_DIR =	printf/src/
 PRINTF_SRC =	ft_printf.c \
+				ft_fprintf.c \
+				formats.c \
 
-# ============PRINTF/FORMATS=========== #
+# ============PRINTF/TYPES=========== #
 
-SRC += $(addprefix $(FORMATS_DIR), $(FORMATS_SRC))
+SRC += $(addprefix $(TYPES_DIR), $(TYPES_SRC))
 
-FORMATS_DIR =	$(PRINTF_DIR)formats/
-FORMATS_SRC =	formats.c \
-				hex_formats.c \
-				num_formats.c \
-				str_formats.c \
+TYPES_DIR 		=	$(PRINTF_DIR)types/
+TYPES_SRC 		=	char_type.c \
+					hexmaj_type.c \
+					hexmin_type.c \
+					int_type.c \
+					pointer_type.c \
+					string_type.c \
+					uint_type.c \
+
+# ============PRINTF/UTILS=========== #
+
+SRC += $(addprefix $(UTILS_DIR), $(UTILS_SRC))
+
+UTILS_DIR 		=	$(PRINTF_DIR)utils/
+UTILS_SRC 		=	int_utils.c \
+					null_spacing.c \
 
 # ==========LIBS / INCLUDES============ #
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pjarnac <pjarnac@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,33 +10,35 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/formats.h"
+
 #include <stdarg.h>
-#include "./formats/formats.h"
-#include "libft.h"
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
 int	ft_printf(const char *s, ...)
 {
-	va_list	args;
-	char	*str;
-	int		total;
+	int32_t		total;
+	va_list		args;
 
 	if (!s)
 		return (-1);
 	total = 0;
-	str = (char *)s;
 	va_start(args, s);
-	while (*str)
+	while (*s)
 	{
-		if (*str == '%')
+		if (*s == '%')
 		{
-			str++;
-			process_format(&str, &args, &total);
+			s++;
+			apply_format(1, &s, &total, args);
 		}
 		else
 		{
-			ft_putchar_fd(*str, 1);
+			write(1, s, 1);
 			total++;
-			str++;
+			s++;
 		}
 	}
 	va_end(args);
