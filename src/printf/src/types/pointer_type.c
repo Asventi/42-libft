@@ -63,7 +63,8 @@ static void	spacing(int fd, uintptr_t num, t_format *format, int32_t *total)
 	}
 }
 
-static void	decide_spacing(int fd, uintptr_t num, t_format *format, int32_t *total)
+static void	decide_spacing(int fd, uintptr_t num,
+	t_format *format, int32_t *total)
 {
 	if (format->flags & ZERO_F && format->prec == -1)
 	{
