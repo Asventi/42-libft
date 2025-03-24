@@ -13,29 +13,29 @@
 #include "vector.h"
 #include "libft.h"
 
-void	vct_erase(t_vct	vct, int32_t pos, int32_t n, void (*del)(void *))
+void	vct_erase(t_vct	vct, int32_t pos, int32_t n)
 {
 	int32_t		i;
 	t_vcthead	*head;
 
 	head = get_vcthead(vct);
 	i = -1;
-	if (del)
+	if (head->del)
 		while (++i < n)
-			del(head->data + (i + pos) * head->e_size);
+			head->del(head->data + (i + pos) * head->e_size);
 	ft_memmove(&head->data[pos * head->e_size],
 		&head->data[(pos + n) * head->e_size],
 		(head->size - pos - n) * head->e_size);
 	head->size -= n;
 }
 
-void	vct_delete(t_vct vct, int32_t pos, void (*del)(void *))
+void	vct_delete(t_vct vct, int32_t pos)
 {
-	vct_erase(vct, pos, 1, del);
+	vct_erase(vct, pos, 1);
 }
 
-void	vct_destroy(t_vct vct, void (*del)(void *))
+void	vct_destroy(t_vct vct)
 {
-	vct_erase(vct, 0, (int32_t) get_vcthead(vct)->size, del);
+	vct_erase(vct, 0, (int32_t) get_vcthead(vct)->size);
 	free_vct(vct);
 }

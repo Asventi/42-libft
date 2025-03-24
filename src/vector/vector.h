@@ -24,11 +24,12 @@ typedef struct s_vcthead
 	size_t	e_size;
 	size_t	size;
 	size_t	capacity;
+	void	(*del)(void *);
 	uint8_t	data[];
 }	t_vcthead;
 
 t_vct		vct_add_dest(t_vctptr vctptr);
-t_vct		create_vector(size_t e_size);
+t_vct		vct_create(size_t e_size, void (*del)(void *));
 t_vcthead	*get_vcthead(t_vct vct);
 t_vcthead	*realloc_vct(t_vcthead *head);
 void		free_vct(t_vct vct);
@@ -41,8 +42,8 @@ int32_t		vct_insert(t_vctptr vctptr, void *val, int32_t i);
 t_vct		vct_insert_dest(t_vctptr vctptr, int32_t i);
 void		add_vct_size(t_vct vct, size_t size);
 void		set_vct_size(t_vct vct, size_t size);
-void		vct_erase(t_vct	vct, int32_t pos, int32_t n, void (*del)(void *));
-void		vct_delete(t_vct vct, int32_t pos, void (*del)(void *));
-void		vct_destroy(t_vct vct, void (*del)(void *));
+void		vct_erase(t_vct	vct, int32_t pos, int32_t n);
+void		vct_delete(t_vct vct, int32_t pos);
+void		vct_destroy(t_vct vct);
 
 #endif

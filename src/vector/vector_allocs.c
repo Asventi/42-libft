@@ -33,7 +33,7 @@ t_vcthead	*realloc_vct(t_vcthead *head)
 	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
 			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return (NULL);
+		return (vct_destroy(&head->data), NULL);
 	new_head->capacity = new_capacity;
 	return (new_head);
 }
@@ -57,7 +57,7 @@ int32_t	vct_allocate(t_vctptr vctptr, size_t size)
 	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
 			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return (-1);
+		return (vct_destroy(*vct), -1);
 	new_head->capacity = new_capacity;
 	*vct = &new_head->data;
 	return (0);
