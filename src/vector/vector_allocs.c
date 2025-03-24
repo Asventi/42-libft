@@ -42,8 +42,9 @@ t_vcthead	*realloc_vct(t_vcthead *head)
  * Allocate new space for the vector, in elements, not in octets.
  * @param vctptr Pointer to the vector
  * @param size Number of element to allocate room for.
+ * @return code: -1 if failed, 0 if success
  */
-void	vct_allocate(t_vctptr vctptr, size_t size)
+int32_t	vct_allocate(t_vctptr vctptr, size_t size)
 {
 	t_vct		*vct;
 	t_vcthead	*new_head;
@@ -56,7 +57,8 @@ void	vct_allocate(t_vctptr vctptr, size_t size)
 	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
 			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return ;
+		return (-1);
 	new_head->capacity = new_capacity;
 	*vct = &new_head->data;
+	return (0);
 }

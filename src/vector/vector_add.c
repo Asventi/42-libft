@@ -42,8 +42,9 @@ t_vct	vct_add_dest(t_vctptr vctptr)
  * Add value to the end of vector with the pointer to the value.
  * @param vctptr The pointer to the vector.
  * @param val Pointer to the value.
+ * @return code: -1 if failed, 0 if success
  */
-void	vct_add(t_vctptr vctptr, void *val)
+int32_t	vct_add(t_vctptr vctptr, void *val)
 {
 	t_vct	*vct;
 	t_vct	*dest;
@@ -51,8 +52,9 @@ void	vct_add(t_vctptr vctptr, void *val)
 	vct = (t_vct *)vctptr;
 	dest = vct_add_dest(vct);
 	if (!dest)
-		return ;
+		return (-1);
 	ft_memcpy(dest, val, get_vcthead(*vct)->e_size);
+	return (0);
 }
 
 /*!
@@ -89,8 +91,9 @@ t_vct	vct_insert_dest(t_vctptr vctptr, int32_t i)
  * @param vctptr The pointer to the vector.
  * @param val Pointer to the value.
  * @param i Index position of element.
+ * @return code: -1 if failed, 0 if success
  */
-void	vct_insert(t_vctptr vctptr, void *val, int32_t i)
+int32_t	vct_insert(t_vctptr vctptr, void *val, int32_t i)
 {
 	t_vct	*vct;
 	t_vct	*dest;
@@ -98,6 +101,7 @@ void	vct_insert(t_vctptr vctptr, void *val, int32_t i)
 	vct = (t_vct *)vctptr;
 	dest = vct_insert_dest(vct, i);
 	if (!dest)
-		return ;
+		return (-1);
 	ft_memcpy(dest, val, get_vcthead(*vct)->e_size);
+	return (0);
 }
