@@ -41,5 +41,7 @@ void		vct_insert(t_vctptr vctptr, void *val, int32_t i);
 t_vct		vct_insert_dest(t_vctptr vctptr, int32_t i);
 void		add_vct_size(t_vct vct, size_t size);
 void		set_vct_size(t_vct vct, size_t size);
+void		vct_erase(t_vct	vct, int32_t pos, int32_t n, void (*del)(void *));
+void		vct_delete(t_vct vct, int32_t pos, void (*del)(void *));
 
 #endif

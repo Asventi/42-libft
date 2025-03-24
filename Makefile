@@ -127,6 +127,8 @@ VECTOR_SRC =	vector.c \
 				vector_add.c \
 				vector_allocs.c \
 				vector_infos.c \
+				vector_print.c \
+				vector_del.c \
 
 # ================PRINTF=============== #
 

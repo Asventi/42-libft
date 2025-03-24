@@ -68,7 +68,7 @@ t_vct	vct_insert_dest(t_vctptr vctptr, int32_t i)
 
 	vct = (t_vct *)vctptr;
 	head = get_vcthead(*vct);
-	if (i >= head->capacity || i < 0)
+	if (i >= (int32_t) head->capacity || i < 0)
 		return (errno = EINVAL, NULL);
 	if (is_vct_full(head))
 	{
