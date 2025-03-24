@@ -37,4 +37,5 @@ void	vct_delete(t_vct vct, int32_t pos, void (*del)(void *))
 void	vct_destroy(t_vct vct, void (*del)(void *))
 {
 	vct_erase(vct, 0, (int32_t) get_vcthead(vct)->size, del);
+	free_vct(vct);
 }
