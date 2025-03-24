@@ -25,11 +25,16 @@ void	vct_erase(t_vct	vct, int32_t pos, int32_t n, void (*del)(void *))
 			del(head->data + (i + pos) * head->e_size);
 	ft_memmove(&head->data[pos * head->e_size],
 		&head->data[(pos + n) * head->e_size],
-		head->size - pos - n);
+		(head->size - pos - n) * head->e_size);
 	head->size -= n;
 }
 
 void	vct_delete(t_vct vct, int32_t pos, void (*del)(void *))
 {
 	vct_erase(vct, pos, 1, del);
+}
+
+void	vct_destroy(t_vct vct, void (*del)(void *))
+{
+	vct_erase(vct, 0, (int32_t) get_vcthead(vct)->size, del);
 }
