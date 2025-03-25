@@ -49,6 +49,8 @@ int32_t	vct_add(t_vctptr vctptr, void *val)
 	t_vct	*vct;
 	t_vct	*dest;
 
+	if (!val)
+		return (-1);
 	vct = (t_vct *)vctptr;
 	dest = vct_add_dest(vct);
 	if (!dest)
@@ -98,6 +100,8 @@ int32_t	vct_insert(t_vctptr vctptr, void *val, int32_t i)
 	t_vct	*vct;
 	t_vct	*dest;
 
+	if (!val)
+		return (-1);
 	vct = (t_vct *)vctptr;
 	dest = vct_insert_dest(vct, i);
 	if (!dest)
