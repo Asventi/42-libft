@@ -49,9 +49,13 @@ int32_t	vct_add(t_vctptr vctptr, void *val)
 	t_vct	*vct;
 	t_vct	*dest;
 
-	if (!val)
-		return (-1);
 	vct = (t_vct *)vctptr;
+	if (!val)
+	{
+		if (get_vcthead(*vct)->flags & DESTROY_ON_FAIL)
+			vct_destroy(*vct);
+		return (-1);
+	}
 	dest = vct_add_dest(vct);
 	if (!dest)
 		return (-1);
@@ -100,9 +104,13 @@ int32_t	vct_insert(t_vctptr vctptr, void *val, int32_t i)
 	t_vct	*vct;
 	t_vct	*dest;
 
-	if (!val)
-		return (-1);
 	vct = (t_vct *)vctptr;
+	if (!val)
+	{
+		if (get_vcthead(*vct)->flags & DESTROY_ON_FAIL)
+			vct_destroy(*vct);
+		return (-1);
+	}
 	dest = vct_insert_dest(vct, i);
 	if (!dest)
 		return (-1);

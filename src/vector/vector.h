@@ -17,6 +17,8 @@
 # include <stdint.h>
 # include <stdbool.h>
 
+# define DESTROY_ON_FAIL 1
+
 typedef void	*t_vct;
 typedef void	*t_vctptr;
 typedef struct s_vcthead
@@ -24,12 +26,13 @@ typedef struct s_vcthead
 	size_t	e_size;
 	size_t	size;
 	size_t	capacity;
+	int32_t	flags;
 	void	(*del)(void *);
 	uint8_t	data[];
 }	t_vcthead;
 
 t_vct		vct_add_dest(t_vctptr vctptr);
-t_vct		vct_create(size_t e_size, void (*del)(void *));
+t_vct		vct_create(size_t e_size, void (*del)(void *), int32_t flags);
 t_vcthead	*get_vcthead(t_vct vct);
 t_vcthead	*realloc_vct(t_vcthead *head);
 void		free_vct(t_vct vct);

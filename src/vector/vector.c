@@ -19,7 +19,7 @@
  * Create the vector.
  * @return A pointer to the start of the data.
  */
-t_vct	vct_create(size_t e_size, void (*del)(void *))
+t_vct	vct_create(size_t e_size, void (*del)(void *), int32_t flags)
 {
 	t_vcthead	*head;
 
@@ -30,6 +30,7 @@ t_vct	vct_create(size_t e_size, void (*del)(void *))
 	head->size = 0;
 	head->e_size = e_size;
 	head->del = del;
+	head->flags = flags;
 	return (&head->data);
 }
 

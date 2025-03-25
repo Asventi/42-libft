@@ -33,7 +33,11 @@ t_vcthead	*realloc_vct(t_vcthead *head)
 	new_head = ft_realloc(head, sizeof (t_vcthead) + head->capacity
 			* head->e_size, sizeof (t_vcthead) + new_capacity * head->e_size);
 	if (!new_head)
-		return (vct_destroy(&head->data), NULL);
+	{
+		if (head->flags & DESTROY_ON_FAIL)
+			vct_destroy(&head->data);
+		return (NULL);
+	}
 	new_head->capacity = new_capacity;
 	return (new_head);
 }
