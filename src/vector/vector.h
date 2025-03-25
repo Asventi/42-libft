@@ -51,5 +51,6 @@ void		vct_destroy(t_vct vct);
 
 int32_t		vct_strcat(t_vctptr vctptr, char *str);
 int32_t		vct_strcpy(t_vctptr vctptr, char *str);
+int32_t		vct_strcatnnull(t_vctptr vctptr, char *str);
 
 #endif
