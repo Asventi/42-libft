@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <limits.h>
+#include "libft.h"
+#include <errno.h>
 
 static int	ft_isspace(char c)
 {
@@ -41,4 +42,30 @@ int	ft_atoi(const char *nptr)
 		i++;
 	}
 	return ((int)(sign * res));
+}
+
+int32_t	ft_atoierr(const char *nptr)
+{
+	int32_t	sign;
+	int32_t	res;
+	int32_t	i;
+
+	sign = 1;
+	res = 0;
+	i = 0;
+	while (nptr[i] == ' ' || nptr[i] == '\t')
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		sign *= -1 * (nptr[i] - 44);
+		i++;
+	}
+	while ('0' <= nptr[i] && nptr[i] <= '9')
+	{
+		if ((res * 10 + nptr[i] - '0') / 10 != res)
+			return (errno = ERANGE, 0);
+		res = res * 10 + nptr[i] - '0';
+		i++;
+	}
+	return (sign * res);
 }
