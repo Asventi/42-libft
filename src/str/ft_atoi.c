@@ -12,6 +12,8 @@
 
 #include "libft.h"
 #include <errno.h>
+#include <stdint.h>
+#include <limits.h>
 
 static int	ft_isspace(char c)
 {
@@ -47,7 +49,7 @@ int	ft_atoi(const char *nptr)
 int32_t	ft_atoierr(const char *nptr)
 {
 	int32_t	sign;
-	int32_t	res;
+	int64_t	res;
 	int32_t	i;
 
 	sign = 1;
@@ -67,5 +69,8 @@ int32_t	ft_atoierr(const char *nptr)
 		res = res * 10 + nptr[i] - '0';
 		i++;
 	}
-	return (sign * res);
+	if ((res > INT_MAX && sign == 1)
+		|| (res > (int64_t)INT_MAX + 1 && sign == -1))
+		return (errno = ERANGE, 0);
+	return ((int32_t)(sign * res));
 }
