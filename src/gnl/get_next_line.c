@@ -86,6 +86,8 @@ char	*get_next_line(int fd)
 	ssize_t	res;
 
 	line = 0;
+	if (fd < -1)
+		return (get_line(0, -1));
 	while (!line)
 	{
 		buf = malloc(BUFFER_SIZE * sizeof (char));
