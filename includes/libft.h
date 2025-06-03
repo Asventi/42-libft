@@ -79,5 +79,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 int		ft_lstsize(t_list *lst);
 
 char	*get_next_line(int fd);
+int8_t	gnl2(int fd, char **buf);
 
 #endif

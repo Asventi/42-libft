@@ -107,3 +107,11 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
+
+int8_t	gnl2(int fd, char **buf)
+{
+	*buf = get_next_line(fd);
+	if (!*buf)
+		return (0);
+	return (1);
+}
