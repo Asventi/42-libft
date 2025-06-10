@@ -49,7 +49,7 @@ static int	calc_alloc(char const *s, const char *set)
 	count = 0;
 	while (*s)
 	{
-		if (!in_word && !ft_ischarset(*s, set))
+		if (!in_word && ft_ischarset(*s, set))
 		{
 			count++;
 			in_word = 1;
@@ -69,7 +69,7 @@ static char	*split_strdup(char const *s, const char *set)
 	i = 0;
 	while (s[i] && !ft_ischarset(s[i], set))
 		i++;
-	dup = ft_calloc(i + 1, sizeof (char));
+	dup = malloc((i + 1) * sizeof (char));
 	if (!dup)
 		return (NULL);
 	i = 0;
@@ -78,16 +78,16 @@ static char	*split_strdup(char const *s, const char *set)
 		dup[i] = s[i];
 		i++;
 	}
+	dup[i] = 0;
 	return (dup);
 }
 
 char	**ft_split(char const *s, const char *set)
 {
-	int		in_word;
-	int		count;
-	char	**res;
+	int				in_word;
+	int				count;
+	char **const	res = malloc((calc_alloc(s, set) + 1) * sizeof (char *));
 
-	res = ft_calloc(calc_alloc(s, set) + 1, sizeof (char *));
 	if (!res)
 		return (NULL);
 	in_word = 0;
@@ -106,5 +106,6 @@ char	**ft_split(char const *s, const char *set)
 			in_word = 0;
 		s++;
 	}
+	res[count] = 0;
 	return (res);
 }
