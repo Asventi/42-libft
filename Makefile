@@ -206,8 +206,8 @@ endif
 ifeq ($(MODE), debug)
 	CFLAGS = -g
 else ifeq ($(MODE), fsanitize)
-	CFLAGS = -g -fsanitize=address -O1
-	LDFLAGS += -fsanitize=address
+	CFLAGS = -g -fsanitize=address -fno-omit-frame-pointer -O1
+	LDFLAGS += -fsanitize=address -fno-omit-frame-pointer
 else ifeq ($(MODE), optimize)
 	CFLAGS += -O2
 else ifeq ($(MODE), full-optimize)
