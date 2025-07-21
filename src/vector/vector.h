@@ -53,5 +53,6 @@ void		vct_sort(t_vct vct, int (*sort_f)(t_vct, t_vct));
 int32_t		vct_strcat(t_vctptr vctptr, char *str);
 int32_t		vct_strcpy(t_vctptr vctptr, char *str);
 int32_t		vct_strcatnnull(t_vctptr vctptr, char *str);
+int32_t		vct_empty_str(t_vct vct);
 
 #endif

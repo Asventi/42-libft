@@ -64,3 +64,11 @@ int32_t	vct_strcpy(t_vctptr vctptr, char *str)
 		return (-1);
 	return (0);
 }
+
+int32_t	vct_empty_str(t_vct vct)
+{
+	if (vct_size(vct) <= 1)
+		return (1);
+	vct_erase(vct, 0, (int32_t)(vct_size(vct) - 1));
+	return (0);
+}
