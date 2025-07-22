@@ -49,12 +49,12 @@ static int	calc_alloc(char const *s, const char *set)
 	count = 0;
 	while (*s)
 	{
-		if (!in_word && ft_ischarset(*s, set))
+		if (!in_word && !ft_ischarset(*s, set))
 		{
 			count++;
 			in_word = 1;
 		}
-		else if (in_word && !ft_ischarset(*s, set))
+		else if (in_word && ft_ischarset(*s, set))
 			in_word = 0;
 		s++;
 	}
