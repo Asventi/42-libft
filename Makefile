@@ -84,6 +84,7 @@ SRC += $(addprefix $(STR_DIR), $(STR_SRC))
 
 STR_DIR =		str/
 STR_SRC =		ft_atoi.c \
+				ft_atof.c \
 				ft_itoa.c \
 				ft_split.c \
 				ft_strchr.c \
