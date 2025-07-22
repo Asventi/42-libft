@@ -17,7 +17,7 @@ static int	ft_isspace(char c)
 	return ((9 <= c && c <= 13) || c == ' ');
 }
 
-static int	ft_atoi_ptr(char **nptr)
+int	ft_atoi_ptr(char **nptr)
 {
 	int						sign;
 	long long int			res;
