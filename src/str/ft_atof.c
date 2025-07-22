@@ -38,6 +38,7 @@ int	ft_atoi_ptr(char **nptr)
 		res = res * 10 + **nptr - '0';
 		*nptr += 1;
 	}
+	*nptr += 1;
 	return ((int)(sign * res));
 }
 
@@ -47,7 +48,6 @@ float	ft_atof(char *str)
 	float	frac_res;
 
 	res = (float)ft_atoi_ptr(&str);
-	str++;
 	frac_res = (float)ft_atoi(str);
 	while (frac_res >= 1)
 		frac_res /= 10;
