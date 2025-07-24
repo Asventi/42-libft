@@ -39,6 +39,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_atoi(const char *nptr);
 int		ft_atoi_ptr(char **nptr, bool shift_finish);
 float	ft_atof(char *str);
+float	ft_atof_ptr(char **str);
 int32_t	ft_atoierr(const char *nptr);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);

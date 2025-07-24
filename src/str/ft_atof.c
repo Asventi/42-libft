@@ -76,7 +76,7 @@ float	ft_atof(char *str)
 		sign = 1;
 	res = (float)ft_atoi_flt(&str, false);
 	if (*str != '.' || (*(str + 1) < '0' || *(str + 1) > '9'))
-		return (res * sign);
+		return (res * (float)sign);
 	str++;
 	frac_res = (float)ft_atoi(str);
 	while (frac_res >= 1)
@@ -86,6 +86,34 @@ float	ft_atof(char *str)
 		frac_res /= 10;
 		str++;
 	}
+	res += frac_res;
+	return (res * (float)sign);
+}
+
+float	ft_atof_ptr(char **str)
+{
+	float	res;
+	float	frac_res;
+	int		sign;
+
+	if (**str == '-' && (*str)++)
+		sign = -1;
+	else
+		sign = 1;
+	res = (float)ft_atoi_flt(str, false);
+	if (**str != '.' || (*((*str) + 1) < '0' || *((*str) + 1) > '9'))
+		return (res * (float)sign);
+	(*str)++;
+	frac_res = (float)ft_atoi(*str);
+	while (frac_res >= 1)
+		frac_res /= 10;
+	while (**str == '0')
+	{
+		frac_res /= 10;
+		(*str)++;
+	}
+	while (ft_isdigit(**str))
+		(*str)++;
 	res += frac_res;
 	return (res * (float)sign);
 }
