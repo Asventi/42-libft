@@ -39,7 +39,7 @@ int	ft_atoi(const char *nptr)
 	while ('0' <= nptr[i] && nptr[i] <= '9')
 	{
 		if ((res * 10 + nptr[i] - '0') / 10 != res)
-			return (-1 * (sign > 0));
+			return (0);
 		res = res * 10 + nptr[i] - '0';
 		i++;
 	}

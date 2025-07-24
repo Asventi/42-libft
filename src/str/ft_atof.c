@@ -34,7 +34,28 @@ int	ft_atoi_ptr(char **nptr, bool shift_finish)
 	while ('0' <= **nptr && **nptr <= '9')
 	{
 		if ((res * 10 + **nptr - '0') / 10 != res)
-			return (-1 * (sign > 0));
+			return (0);
+		res = res * 10 + **nptr - '0';
+		*nptr += 1;
+	}
+	if (**nptr != 0 && shift_finish)
+		*nptr += 1;
+	return ((int)(sign * res));
+}
+
+static int	ft_atoi_flt(char **nptr, bool shift_finish)
+{
+	int						sign;
+	long long int			res;
+
+	sign = 1;
+	res = 0;
+	while (ft_isspace(**nptr))
+		*nptr += 1;
+	while ('0' <= **nptr && **nptr <= '9')
+	{
+		if ((res * 10 + **nptr - '0') / 10 != res)
+			return (0);
 		res = res * 10 + **nptr - '0';
 		*nptr += 1;
 	}
@@ -47,8 +68,16 @@ float	ft_atof(char *str)
 {
 	float	res;
 	float	frac_res;
+	int		sign;
 
-	res = (float)ft_atoi_ptr(&str);
+	if (*str == '-' && str++)
+		sign = -1;
+	else
+		sign = 1;
+	res = (float)ft_atoi_flt(&str, false);
+	if (*str != '.' || (*(str + 1) < '0' || *(str + 1) > '9'))
+		return (res * sign);
+	str++;
 	frac_res = (float)ft_atoi(str);
 	while (frac_res >= 1)
 		frac_res /= 10;
@@ -58,5 +87,5 @@ float	ft_atof(char *str)
 		str++;
 	}
 	res += frac_res;
-	return (res);
+	return (res * (float)sign);
 }
