@@ -17,7 +17,7 @@ static int	ft_isspace(char c)
 	return ((9 <= c && c <= 13) || c == ' ');
 }
 
-int	ft_atoi_ptr(char **nptr)
+int	ft_atoi_ptr(char **nptr, bool shift_finish)
 {
 	int						sign;
 	long long int			res;
@@ -38,7 +38,8 @@ int	ft_atoi_ptr(char **nptr)
 		res = res * 10 + **nptr - '0';
 		*nptr += 1;
 	}
-	*nptr += 1;
+	if (**nptr != 0 && shift_finish)
+		*nptr += 1;
 	return ((int)(sign * res));
 }
 
